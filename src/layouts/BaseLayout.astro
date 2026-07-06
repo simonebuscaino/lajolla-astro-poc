@@ -6,6 +6,7 @@ const {
   description = 'POC Astro per il redesign del sito La Jolla Centro Atletico.'
 } = Astro.props;
 ---
+
 <!doctype html>
 <html lang="it">
   <head>
@@ -14,9 +15,27 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#10201d" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <!-- Netlify Identity: serve per intercettare invite_token e recovery_token -->
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
     <title>{title}</title>
   </head>
+
   <body>
     <slot />
+
+    <!-- Dopo login / registrazione / invito, manda l'utente al CMS -->
+    <script is:inline>
+      if (window.netlifyIdentity) {
+        window.netlifyIdentity.on('init', function (user) {
+          if (!user) {
+            window.netlifyIdentity.on('login', function () {
+              document.location.href = '/admin/';
+            });
+          }
+        });
+      }
+    </script>
   </body>
 </html>
