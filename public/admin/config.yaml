@@ -1,0 +1,38 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+locale: "it"
+
+collections:
+  - name: "settings"
+    label: "Impostazioni sito"
+    files:
+      - name: "homepage"
+        label: "Homepage"
+        file: "src/content/settings/homepage.json"
+        fields:
+          - { label: "Titolo hero", name: "heroTitle", widget: "string" }
+          - { label: "Sottotitolo hero", name: "heroSubtitle", widget: "text" }
+          - { label: "CTA primaria", name: "primaryCta", widget: "string" }
+          - { label: "CTA secondaria", name: "secondaryCta", widget: "string" }
+          - { label: "Telefono", name: "phone", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Indirizzo", name: "address", widget: "string" }
+
+  - name: "servizi"
+    label: "Servizi"
+    folder: "src/content/servizi"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Categoria", name: "category", widget: "string" }
+      - { label: "Descrizione breve", name: "shortDescription", widget: "text" }
+      - { label: "Testo CTA", name: "ctaLabel", widget: "string", required: false }
+      - { label: "Ordine", name: "order", widget: "number", required: false }
+      - { label: "Contenuto pagina", name: "body", widget: "markdown" }

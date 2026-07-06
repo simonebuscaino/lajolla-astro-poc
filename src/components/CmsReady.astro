@@ -1,0 +1,13 @@
+---
+import { cmsCollections } from '../content/site';
+---
+<section class="section cms-panel" id="cms">
+  <div>
+    <span class="eyebrow">CMS ready</span>
+    <h2>Pronta per Strapi, Sanity o WordPress headless.</h2>
+    <p>Questa POC usa dati locali in TypeScript, ma la struttura è già pensata per sostituire i contenuti con API CMS senza cambiare i componenti.</p>
+  </div>
+  <div class="cms-list">
+    {cmsCollections.map((collection) => <span>{collection}</span>)}
+  </div>
+</section>

@@ -1,0 +1,25 @@
+---
+const { services } = Astro.props;
+---
+
+<section class="section" id="servizi">
+  <div class="container">
+    <div class="section-heading">
+      <p class="eyebrow">Servizi</p>
+      <h2>Percorsi pensati per recupero, performance e benessere.</h2>
+    </div>
+
+    <div class="service-grid">
+      {services.map((service) => (
+        <article class="service-card">
+          <span>{service.data.category}</span>
+          <h3>{service.data.title}</h3>
+          <p>{service.data.shortDescription}</p>
+          <a href={`/servizi/${service.data.slug}`}>
+            Scopri di più
+          </a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

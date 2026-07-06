@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import Method from '../components/Method.astro';
+import CmsReady from '../components/CmsReady.astro';
+import ContactCta from '../components/ContactCta.astro';
+
+import homepage from '../content/settings/homepage.json';
+import { getCollection } from 'astro:content';
+
+const services = await getCollection('servizi');
+
+const sortedServices = services.sort((a, b) => {
+  return (a.data.order ?? 99) - (b.data.order ?? 99);
+});
+---
+
+<BaseLayout
+  title="La Jolla | Fitness, riabilitazione e performance"
+  description={homepage.heroSubtitle}
+>
+  <Header />
+
+  <Hero
+    title={homepage.heroTitle}
+    subtitle={homepage.heroSubtitle}
+    primaryCta={homepage.primaryCta}
+    secondaryCta={homepage.secondaryCta}
+  />
+
+  <ServiceGrid services={sortedServices} />
+
+  <Method />
+
+  <CmsReady />
+
+  <ContactCta
+    phone={homepage.phone}
+    email={homepage.email}
+    address={homepage.address}
+  />
+</BaseLayout>

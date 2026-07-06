@@ -1,0 +1,30 @@
+---
+import { site } from '../content/site';
+---
+<section class="hero" id="top">
+  <div class="hero-copy">
+    <span class="eyebrow">{site.eyebrow}</span>
+    <h1>{site.title}</h1>
+    <p class="hero-text">{site.subtitle}</p>
+    <div class="hero-actions">
+      <a class="button primary" href={site.bookingUrl}>Prenota una valutazione</a>
+      <a class="button secondary" href="#servizi">Esplora i percorsi</a>
+    </div>
+    <div class="trust-row" aria-label="Punti di fiducia">
+      <span>Valutazione iniziale</span>
+      <span>Percorsi personalizzati</span>
+      <span>Team multidisciplinare</span>
+    </div>
+  </div>
+
+  <div class="hero-visual" aria-hidden="true">
+    <div class="orb orb-one"></div>
+    <div class="orb orb-two"></div>
+    <div class="athlete-card">
+      <div class="athlete-head"></div>
+      <div class="athlete-body"></div>
+      <div class="metric-card metric-one"><strong>+36%</strong><span>stabilità percepita</span></div>
+      <div class="metric-card metric-two"><strong>4 step</strong><span>metodo guidato</span></div>
+    </div>
+  </div>
+</section>

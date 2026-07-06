@@ -1,0 +1,18 @@
+---
+import { method } from '../content/site';
+---
+<section class="section split" id="metodo">
+  <div>
+    <span class="eyebrow">Metodo</span>
+    <h2>Dal primo contatto al ritorno al movimento.</h2>
+    <p>La nuova UX mette in evidenza un percorso semplice: capire il problema, definire l’obiettivo, seguire il programma e misurare i progressi.</p>
+  </div>
+  <div class="steps">
+    {method.map((item, index) => (
+      <article class="step">
+        <span>{String(index + 1).padStart(2, '0')}</span>
+        <p>{item}</p>
+      </article>
+    ))}
+  </div>
+</section>

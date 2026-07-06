@@ -1,0 +1,18 @@
+---
+import { site } from '../content/site';
+---
+<section class="section contact" id="prenota">
+  <div>
+    <span class="eyebrow">Contatti</span>
+    <h2>Prenota una valutazione iniziale.</h2>
+    <p>Modulo dimostrativo pronto per essere collegato a endpoint server-side, CRM, email o WhatsApp Business.</p>
+  </div>
+  <form class="lead-form" name="lead" method="post">
+    <label>Nome e cognome<input name="name" autocomplete="name" placeholder="Mario Rossi" /></label>
+    <label>Email<input name="email" type="email" autocomplete="email" placeholder="nome@email.it" /></label>
+    <label>Obiettivo<select name="goal"><option>Preparazione atletica</option><option>Rieducazione funzionale</option><option>Posturale / schiena</option><option>Altro</option></select></label>
+    <label>Messaggio<textarea name="message" rows="4" placeholder="Raccontaci di cosa hai bisogno"></textarea></label>
+    <button class="button primary" type="submit">Invia richiesta</button>
+    <p class="form-note">Telefono: {site.phone} · Email: {site.email}</p>
+  </form>
+</section>

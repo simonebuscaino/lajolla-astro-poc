@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import homepage from '../../content/settings/homepage.json';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const services = await getCollection('servizi');
+
+  return services.map((service) => ({
+    params: {
+      slug: service.data.slug,
+    },
+    props: {
+      service,
+    },
+  }));
+}
+
+const { service } = Astro.props;
+const { Content } = await render(service);
+---
+
+<BaseLayout
+  title={`${service.data.title} | La Jolla`}
+  description={service.data.shortDescription}
+>
+  <Header />
+
+  <main class="service-detail">
+    <section class="detail-hero">
+      <div class="container">
+        <p class="eyebrow">{service.data.category}</p>
+        <h1>{service.data.title}</h1>
+        <p>{service.data.shortDescription}</p>
+      </div>
+    </section>
+
+    <section class="prose-wrap">
+      <div class="prose">
+        <Content />
+      </div>
+    </section>
+
+    <ContactCta
+      phone={homepage.phone}
+      email={homepage.email}
+      address={homepage.address}
+    />
+  </main>
+</BaseLayout>

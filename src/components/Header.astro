@@ -1,0 +1,41 @@
+---
+import { site } from '../content/site';
+---
+<header class="site-header">
+  <a class="brand" href="/" aria-label="La Jolla home">
+    <span class="brand-mark">LJ</span>
+    <span>
+      <strong>La Jolla</strong>
+      <small>Centro Atletico</small>
+    </span>
+  </a>
+
+  <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button>
+    <span></span><span></span><span></span>
+  </button>
+
+  <nav id="main-nav" class="nav" aria-label="Navigazione principale" data-nav>
+    <a href="#servizi">Servizi</a>
+    <a href="#metodo">Metodo</a>
+    <a href="#team">Team</a>
+    <a href="#cms">CMS</a>
+    <a class="nav-cta" href={site.bookingUrl}>Prenota valutazione</a>
+  </nav>
+</header>
+
+<script>
+  const button = document.querySelector('[data-menu-button]');
+  const nav = document.querySelector('[data-nav]');
+
+  button?.addEventListener('click', () => {
+    const isOpen = nav?.classList.toggle('nav-open');
+    button.setAttribute('aria-expanded', String(Boolean(isOpen)));
+  });
+
+  nav?.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('nav-open');
+      button?.setAttribute('aria-expanded', 'false');
+    });
+  });
+</script>
