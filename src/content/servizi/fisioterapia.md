@@ -14,6 +14,8 @@ Il percorso parte da una valutazione iniziale, utile per comprendere la situazio
 
 ## A chi è rivolto
 
+![](/uploads/1599782_cfakepath390x39068c7d90c27e69._std.webp)
+
 Il servizio è indicato per persone che stanno affrontando dolori muscolari o articolari, recupero dopo un trauma, rientro dopo un intervento chirurgico, limitazioni nei movimenti o fastidi ricorrenti legati alla postura e allo stile di vita.
 
 È adatto anche a chi pratica sport e vuole recuperare in modo sicuro dopo un sovraccarico, una distorsione, una lesione muscolare o un periodo di stop.
@@ -26,12 +28,12 @@ L’obiettivo non è solo trattare il sintomo, ma aiutare il corpo a ritrovare c
 
 ## Obiettivi del percorso
 
-- Ridurre dolore e rigidità
-- Recuperare mobilità e funzionalità
-- Migliorare forza, controllo e stabilità
-- Favorire il ritorno allo sport o alle attività quotidiane
-- Prevenire ricadute e compensi
-- Costruire un percorso sostenibile e personalizzato
+* Ridurre dolore e rigidità
+* Recuperare mobilità e funzionalità
+* Migliorare forza, controllo e stabilità
+* Favorire il ritorno allo sport o alle attività quotidiane
+* Prevenire ricadute e compensi
+* Costruire un percorso sostenibile e personalizzato
 
 ## Valutazione iniziale
 
