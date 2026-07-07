@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { englishPages, services } from '../../lib/cmsContent';
+---
+<BaseLayout title="La Jolla Athletic Center Turin | English" description="Essential English information for La Jolla Athletic Center in Turin." canonicalPath="/en/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">English version</p><h1>La Jolla Athletic Center in Turin.</h1><p>Fitness, recovery, sport-specific preparation, Pilates and specialist support. This essential English area preserves the historic English content while the full service archive remains in Italian.</p><div class="hero-actions"><a class="button primary" href="/en/contact/">Contact us</a><a class="button secondary" href="/servizi/">Italian services</a></div></div></section><section class="section"><div class="mini-grid">{englishPages.filter((page) => page.href !== '/en/').map((page) => <article class="mini-card"><h2>{page.title}</h2><p>{page.description}</p><a class="text-link" href={page.href}>Open</a></article>)}</div></section></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

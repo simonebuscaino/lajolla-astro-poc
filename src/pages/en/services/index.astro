@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import homepage from '../../../content/settings/homepage.json';
+import { services } from '../../../lib/cmsContent';
+const picks = ['preparazione-atletica', 'rieducazione-funzionale', 'fisioterapia-riabilitazione', 'pilates', 'nutrizionista-dietologa'].map((slug) => services.find((service) => service.slug === slug)).filter(Boolean);
+---
+<BaseLayout title="Services | La Jolla Athletic Center" description="Essential English list of La Jolla services." canonicalPath="/en/services/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Services</p><h1>Fitness, recovery and sport preparation.</h1><p>The complete service archive is available in Italian; this page preserves the essential English overview.</p></div></section><section class="section"><div class="service-grid compact">{picks.map((service) => <article class="service-card"><span class="service-tag">{service.category}</span><h2>{service.title}</h2><p>{service.shortDescription}</p><a class="text-link" href={`/servizi/${service.slug}/`}>Italian detail</a></article>)}</div></section></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

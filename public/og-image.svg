@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">La Jolla Centro Atletico</title>
+  <desc id="desc">Open graph image La Jolla Centro Atletico</desc>
+  <rect width="1200" height="630" fill="#061d26"/>
+  <path d="M0 465c195-77 369-82 565-29 214 59 382 55 635-51v245H0z" fill="#0a9bd3" opacity=".9"/>
+  <path d="M0 506c200-57 385-58 581-9 214 53 384 47 619-44v177H0z" fill="#92d400" opacity=".94"/>
+  <rect x="82" y="78" width="360" height="94" rx="24" fill="#fff"/>
+  <image href="/logo-lajolla.svg" x="100" y="91" width="324" height="68"/>
+  <text x="82" y="285" font-family="Arial Black, Arial, sans-serif" font-size="68" fill="#fff">Fitness, recupero</text>
+  <text x="82" y="365" font-family="Arial Black, Arial, sans-serif" font-size="68" fill="#fff">e performance</text>
+  <text x="86" y="435" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#e9f7fb">Percorsi personalizzati a Torino</text>
+</svg>

@@ -1,0 +1,13 @@
+{
+  "title": "Ritorno in campo",
+  "slug": "ritorno-in-campo",
+  "description": "Gallery storica ritorno in campo da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/ritorno_in_campo/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Ritorno in campo La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

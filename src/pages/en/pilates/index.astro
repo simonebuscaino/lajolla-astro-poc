@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import homepage from '../../../content/settings/homepage.json';
+---
+<BaseLayout title="Pilates | La Jolla Athletic Center" description="Pilates at La Jolla Athletic Center." canonicalPath="/en/pilates/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Pilates</p><h1>Pilates classes for control, posture and movement awareness.</h1><p>This page preserves the essential English Pilates content and links to the complete Italian service sheet.</p><a class="button secondary" href="/servizi/pilates/">Italian Pilates detail</a></div></section></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>

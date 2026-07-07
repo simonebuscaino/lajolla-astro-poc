@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import ContactCta from '../../../components/ContactCta.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import homepage from '../../../content/settings/homepage.json';
+---
+<BaseLayout title="Contact us | La Jolla Athletic Center" description="Contact La Jolla Athletic Center in Turin." canonicalPath="/en/contact/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Contact</p><h1>{homepage.address}</h1><p>Phone and fax: {homepage.phone}. Email: {homepage.email}.</p></div></section><ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} title="Contact La Jolla." text="Tell us what you need and we will direct you to the right path or specialist." /></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>

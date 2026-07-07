@@ -1,13 +1,9 @@
 ---
-import { site } from '../content/site';
+const { phone, whatsapp } = Astro.props;
 ---
 <header class="site-header">
   <a class="brand" href="/" aria-label="La Jolla home">
-    <span class="brand-mark">LJ</span>
-    <span>
-      <strong>La Jolla</strong>
-      <small>Centro Atletico</small>
-    </span>
+    <img src="/logo-lajolla.svg" alt="La Jolla Centro Atletico" width="206" height="53" />
   </a>
 
   <button class="menu-button" type="button" aria-expanded="false" aria-controls="main-nav" data-menu-button>
@@ -15,11 +11,14 @@ import { site } from '../content/site';
   </button>
 
   <nav id="main-nav" class="nav" aria-label="Navigazione principale" data-nav>
-    <a href="#servizi">Servizi</a>
-    <a href="#metodo">Metodo</a>
-    <a href="#team">Team</a>
-    <a href="#cms">CMS</a>
-    <a class="nav-cta" href={site.bookingUrl}>Prenota valutazione</a>
+    <a href="/il-centro/">Il centro</a>
+    <a href="/servizi/">Servizi</a>
+    <a href="/specialisti/">Specialisti</a>
+    <a href="/orari/">Orari</a>
+    <a href="/contatti/">Contatti</a>
+    <a href="/en/">EN</a>
+    <a class="nav-phone" href={`tel:${phone?.replaceAll(' ', '')}`}>{phone}</a>
+    <a class="nav-cta" href={whatsapp || '/contatti/'}>Prenota</a>
   </nav>
 </header>
 
@@ -34,7 +33,7 @@ import { site } from '../content/site';
 
   nav?.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
-      nav.classList.remove('nav-open');
+      nav?.classList.remove('nav-open');
       button?.setAttribute('aria-expanded', 'false');
     });
   });

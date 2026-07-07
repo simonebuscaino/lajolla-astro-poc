@@ -1,14 +1,14 @@
 ---
-import { method } from '../content/site';
+const { steps = [] } = Astro.props;
 ---
 <section class="section split" id="metodo">
-  <div>
+  <div class="section-heading sticky-copy">
     <span class="eyebrow">Metodo</span>
-    <h2>Dal primo contatto al ritorno al movimento.</h2>
-    <p>La nuova UX mette in evidenza un percorso semplice: capire il problema, definire l’obiettivo, seguire il programma e misurare i progressi.</p>
+    <h2>Dal primo contatto a un percorso che puoi misurare.</h2>
+    <p>La parte moderna non e solo estetica: il sito racconta un metodo semplice da capire, piu facile da fidarsi e piu forte per la SEO.</p>
   </div>
   <div class="steps">
-    {method.map((item, index) => (
+    {steps.map((item, index) => (
       <article class="step">
         <span>{String(index + 1).padStart(2, '0')}</span>
         <p>{item}</p>

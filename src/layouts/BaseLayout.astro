@@ -2,9 +2,19 @@
 import '../styles/global.css';
 
 const {
-  title = 'La Jolla Centro Atletico — POC Astro',
-  description = 'POC Astro per il redesign del sito La Jolla Centro Atletico.'
+  title = 'La Jolla Centro Atletico | Fitness, recupero e performance',
+  description = 'Centro atletico a Torino per fitness, recupero funzionale e performance con percorsi personalizzati.',
+  canonicalPath = Astro.url.pathname,
+  image = '/og-image.svg',
+  robots = 'index, follow',
+  structuredData = [],
+  enableIdentity = false,
 } = Astro.props;
+
+const siteUrl = Astro.site ?? new URL('https://www.lajolla.it');
+const canonicalUrl = new URL(canonicalPath, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+const jsonLdItems = Array.isArray(structuredData) ? structuredData.filter(Boolean) : [structuredData].filter(Boolean);
 ---
 
 <!doctype html>
@@ -13,11 +23,26 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#10201d" />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#061d26" />
+    <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/logo-lajolla.svg" as="image" type="image/svg+xml" />
 
-    <!-- Netlify Identity: serve per intercettare invite_token e recovery_token -->
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:site_name" content="La Jolla Centro Atletico" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+
+    {enableIdentity && <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>}
+    {jsonLdItems.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}
 
     <title>{title}</title>
   </head>
@@ -25,17 +50,18 @@ const {
   <body>
     <slot />
 
-    <!-- Dopo login / registrazione / invito, manda l'utente al CMS -->
-    <script is:inline>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on('init', function (user) {
-          if (!user) {
-            window.netlifyIdentity.on('login', function () {
-              document.location.href = '/admin/';
-            });
-          }
-        });
-      }
-    </script>
+    {enableIdentity && (
+      <script is:inline>
+        if (window.netlifyIdentity) {
+          window.netlifyIdentity.on('init', function (user) {
+            if (!user) {
+              window.netlifyIdentity.on('login', function () {
+                document.location.href = '/admin/';
+              });
+            }
+          });
+        }
+      </script>
+    )}
   </body>
 </html>

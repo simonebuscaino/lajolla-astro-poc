@@ -1,0 +1,13 @@
+{
+  "title": "Riatletizzazione e infortunio",
+  "slug": "infortunio",
+  "description": "Gallery storica riatletizzazione e infortunio da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/infortunio/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Riatletizzazione e infortunio La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

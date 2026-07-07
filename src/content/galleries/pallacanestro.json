@@ -1,0 +1,13 @@
+{
+  "title": "Pallacanestro",
+  "slug": "pallacanestro",
+  "description": "Gallery storica pallacanestro da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/pallacanestro/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Pallacanestro La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

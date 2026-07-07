@@ -1,0 +1,25 @@
+---
+const { intro, testimonials = [] } = Astro.props;
+---
+<section class="section team-band" id="team">
+  <div class="section-heading">
+    <p class="eyebrow">Team e fiducia</p>
+    <h2>Professionisti coordinati intorno al percorso della persona.</h2>
+    <p>{intro}</p>
+  </div>
+  <div class="expertise-grid" aria-label="Aree di competenza">
+    <article><strong>Performance</strong><span>Forza, mobilita, prevenzione e preparazione sportiva.</span></article>
+    <article><strong>Recupero</strong><span>Ritorno al movimento dopo stop, dolore o infortunio.</span></article>
+    <article><strong>Benessere</strong><span>Postura, autonomia, continuita e qualita del movimento.</span></article>
+  </div>
+  {testimonials.length > 0 && (
+    <div class="testimonial-row">
+      {testimonials.map((item) => (
+        <figure class="quote-card">
+          <blockquote>{item.quote}</blockquote>
+          <figcaption>{item.author}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )}
+</section>

@@ -1,52 +1,129 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
+import FaqSection from '../../components/FaqSection.astro';
 import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
 import homepage from '../../content/settings/homepage.json';
-import { getCollection, render } from 'astro:content';
+import { getService, services, site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, faqJsonLd, localBusinessJsonLd, serviceJsonLd } from '../../lib/seo';
 
-export async function getStaticPaths() {
-  const services = await getCollection('servizi');
-
-  return services.map((service) => ({
-    params: {
-      slug: service.data.slug,
-    },
-    props: {
-      service,
-    },
-  }));
+export function getStaticPaths() {
+  return services.map((service) => ({ params: { slug: service.slug }, props: { service } }));
 }
 
 const { service } = Astro.props;
-const { Content } = await render(service);
+const relatedServices = service.relatedSlugs.map((slug) => getService(slug)).filter(Boolean).slice(0, 3);
+const canonicalPath = `/servizi/${service.slug}/`;
+const pageUrl = new URL(canonicalPath, Astro.site ?? 'https://www.lajolla.it').toString();
+const pageFaqs = [
+  { question: `A chi e adatto ${service.title}?`, answer: service.audience.join(', ') + '.' },
+  { question: 'Come inizia il percorso?', answer: 'Si parte da una valutazione iniziale e da una definizione degli obiettivi, poi il programma viene progressivamente adattato.' }
+];
+const structuredData = [
+  localBusinessJsonLd(site),
+  serviceJsonLd(service),
+  breadcrumbJsonLd([
+    { name: 'Home', url: 'https://www.lajolla.it/' },
+    { name: 'Servizi', url: 'https://www.lajolla.it/servizi/' },
+    { name: service.title, url: pageUrl }
+  ]),
+  faqJsonLd(pageFaqs)
+];
 ---
 
-<BaseLayout
-  title={`${service.data.title} | La Jolla`}
-  description={service.data.shortDescription}
->
-  <Header />
+<BaseLayout title={service.seoTitle || `${service.title} | La Jolla Centro Atletico`} description={service.seoDescription || service.shortDescription} canonicalPath={canonicalPath} image="/og-image.svg" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
 
   <main class="service-detail">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span aria-hidden="true">/</span>
+      <a href="/servizi/">Servizi</a>
+      <span aria-hidden="true">/</span>
+      <span>{service.title}</span>
+    </nav>
+
     <section class="detail-hero">
-      <div class="container">
-        <p class="eyebrow">{service.data.category}</p>
-        <h1>{service.data.title}</h1>
-        <p>{service.data.shortDescription}</p>
+      <div class="detail-copy">
+        <p class="eyebrow">{service.category}</p>
+        <h1>{service.title}</h1>
+        <p>{service.shortDescription}</p>
+        <div class="hero-actions">
+          <a class="button primary" href="/contatti/">Prenota una valutazione</a>
+          <a class="button secondary" href={`tel:${homepage.phone.replaceAll(' ', '')}`}>Chiama La Jolla</a>
+        </div>
+      </div>
+      <figure class="detail-visual">
+        <img src={homepage.heroImage} alt={homepage.heroImageAlt} width="620" height="465" loading="eager" decoding="async" />
+      </figure>
+    </section>
+
+    <section class="section landing-grid">
+      <div>
+        <p class="eyebrow">Benefici</p>
+        <h2>Cosa ottieni dal percorso.</h2>
+        <ul class="check-list">
+          {service.benefits.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow">Per chi e</p>
+        <h2>Quando puo essere utile.</h2>
+        <ul class="check-list blue">
+          {service.audience.map((item) => <li>{item}</li>)}
+        </ul>
       </div>
     </section>
 
-    <section class="prose-wrap">
+    <section class="section prose-section">
       <div class="prose">
-        <Content />
+        {service.body.map((paragraph) => <p>{paragraph}</p>)}
+        <h2>Contenuti storici preservati</h2>
+        <p>Questa scheda raccoglie e sostituisce i vecchi percorsi: {service.legacyUrls.join(', ')}. Gli URL storici sono mappati verso questa pagina per non disperdere traffico, contenuti e segnali SEO.</p>
       </div>
     </section>
 
-    <ContactCta
-      phone={homepage.phone}
-      email={homepage.email}
-      address={homepage.address}
-    />
+    <section class="section split service-process">
+      <div class="section-heading sticky-copy">
+        <p class="eyebrow">Processo</p>
+        <h2>Un percorso progressivo, non una seduta isolata.</h2>
+        <p>La struttura chiarisce cosa succede dopo la richiesta e aiuta l'utente a capire se il servizio risponde al suo bisogno.</p>
+      </div>
+      <div class="steps">
+        {service.processSteps.map((item, index) => (
+          <article class="step">
+            <span>{String(index + 1).padStart(2, '0')}</span>
+            <p>{item}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <FaqSection faqs={pageFaqs} />
+
+    {relatedServices.length > 0 && (
+      <section class="section related-services">
+        <div class="section-heading">
+          <p class="eyebrow">Altri percorsi</p>
+          <h2>Servizi collegati.</h2>
+        </div>
+        <div class="service-grid compact">
+          {relatedServices.map((item) => (
+            <article class="service-card">
+              <span class="service-tag">{item.category}</span>
+              <h3>{item.title}</h3>
+              <p>{item.shortDescription}</p>
+              <a class="text-link" href={`/servizi/${item.slug}/`}>Scopri il percorso</a>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} title={`Vuoi capire se ${service.title.toLowerCase()} e il percorso giusto?`} text="Inizia da una valutazione: raccogliamo obiettivi, storia e priorita per proporti il passo successivo piu sensato." />
   </main>
+
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
 </BaseLayout>
+

@@ -1,0 +1,9 @@
+{
+  "name": "Fnac",
+  "slug": "fnac",
+  "relation": "Partner storico",
+  "description": "Contenuto storico preservato e archiviato nella sezione partner.",
+  "legacyUrls": [
+    "/partner_fnac.html"
+  ]
+}

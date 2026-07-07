@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { specialists, getService, site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Specialisti', url: 'https://www.lajolla.it/specialisti/' }])];
+---
+<BaseLayout title="Specialisti | La Jolla Centro Atletico Torino" description="Fisioterapista, osteopata, massofisioterapisti, preparatori atletici, medico dello sport, dietologa e nutrizionista a Torino." canonicalPath="/specialisti/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Specialisti</p><h1>Un team multidisciplinare per obiettivi concreti.</h1><p>Le figure professionali del centro sono collegate ai percorsi di allenamento, recupero e performance.</p></div></section>
+    <section class="section"><div class="mini-grid">{specialists.map((item) => (<article class="mini-card" id={item.slug}><span class="service-tag">{item.appointment}</span><h2>{item.role}</h2><p>{item.summary}</p><div class="pill-row">{item.services.map((slug) => { const service = getService(slug); return service ? <a href={`/servizi/${service.slug}/`}>{service.title}</a> : null; })}</div></article>))}</div></section>
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} title="Prenota con lo specialista giusto." text="Descrivi il tuo obiettivo: ti indirizziamo verso la figura piu coerente con il percorso." />
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

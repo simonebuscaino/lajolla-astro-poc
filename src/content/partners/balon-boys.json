@@ -1,0 +1,10 @@
+{
+  "name": "Balon Boys",
+  "slug": "balon-boys",
+  "relation": "Partnership",
+  "description": "Campionati calcio a 5 e calcio a 8 collegati alla comunita sportiva locale.",
+  "url": "http://www.balonboys.it/",
+  "legacyUrls": [
+    "/partner_balon_boys.html"
+  ]
+}

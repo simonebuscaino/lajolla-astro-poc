@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { specialists, site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const hours = [['Lunedi', '9.00-21.00'], ['Martedi', '10.15-21.00'], ['Mercoledi', '9.00-21.00'], ['Giovedi', '10.15-21.00'], ['Venerdi', '9.00-21.00'], ['Sabato', '10.00-13.00 (su appuntamento da h 9.00)'], ['Domenica', 'Chiuso']];
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Orari', url: 'https://www.lajolla.it/orari/' }])];
+---
+<BaseLayout title="Orari | La Jolla Centro Atletico Torino" description="Orari di apertura del centro La Jolla, corsi e specialisti su appuntamento a Torino." canonicalPath="/orari/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Orari</p><h1>Orari del centro e appuntamenti specialistici.</h1><p>Eventuali modifiche vengono comunicate dal centro. Gli specialisti ricevono su appuntamento.</p></div></section>
+    <section class="section landing-grid"><div><h2>Orario regolare</h2><div class="schedule-list">{hours.map(([day, value]) => <p><strong>{day}</strong><span>{value}</span></p>)}</div></div><div><h2>Specialisti su appuntamento</h2><ul class="check-list blue">{specialists.map((item) => <li>{item.role}</li>)}</ul><a class="button secondary" href="/specialisti/">Vedi specialisti</a></div></section>
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} />
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

@@ -1,25 +1,28 @@
 ---
 const { services } = Astro.props;
+const cards = services.map((service) => ({ data: service.data ?? service.frontmatter ?? service }));
 ---
 
 <section class="section" id="servizi">
-  <div class="container">
-    <div class="section-heading">
-      <p class="eyebrow">Servizi</p>
-      <h2>Percorsi pensati per recupero, performance e benessere.</h2>
-    </div>
+  <div class="section-heading wide">
+    <p class="eyebrow">Servizi</p>
+    <h2>Percorsi chiari per allenarti, recuperare e tornare alla performance.</h2>
+    <p>Le aree storiche del sito sono state riorganizzate per bisogno: fitness, programmi individuali, preparazione sportiva, recupero e specialisti.</p>
+  </div>
 
-    <div class="service-grid">
-      {services.map((service) => (
-        <article class="service-card">
-          <span>{service.data.category}</span>
-          <h3>{service.data.title}</h3>
-          <p>{service.data.shortDescription}</p>
-          <a href={`/servizi/${service.data.slug}`}>
-            Scopri di più
-          </a>
-        </article>
-      ))}
-    </div>
+  <div class="service-grid">
+    {cards.map((service) => (
+      <article class="service-card">
+        <span class="service-tag">{service.data.category}</span>
+        <h3>{service.data.title}</h3>
+        <p>{service.data.shortDescription}</p>
+        {service.data.benefits?.length > 0 && (
+          <ul>
+            {service.data.benefits.slice(0, 2).map((benefit) => <li>{benefit}</li>)}
+          </ul>
+        )}
+        <a class="text-link" href={`/servizi/${service.data.slug}/`}>Scopri il percorso</a>
+      </article>
+    ))}
   </div>
 </section>

@@ -4,41 +4,79 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import ServiceGrid from '../components/ServiceGrid.astro';
 import Method from '../components/Method.astro';
-import CmsReady from '../components/CmsReady.astro';
+import TeamTrust from '../components/TeamTrust.astro';
+import FaqSection from '../components/FaqSection.astro';
 import ContactCta from '../components/ContactCta.astro';
-
+import SiteFooter from '../components/SiteFooter.astro';
 import homepage from '../content/settings/homepage.json';
-import { getCollection } from 'astro:content';
+import { services, serviceCategories, specialists, site } from '../lib/cmsContent';
+import { faqJsonLd, localBusinessJsonLd } from '../lib/seo';
 
-const services = await getCollection('servizi');
-
-const sortedServices = services.sort((a, b) => {
-  return (a.data.order ?? 99) - (b.data.order ?? 99);
-});
+const featured = services.filter((service) => homepage.featuredServices?.includes(service.slug) || service.featured).slice(0, 8);
+const structuredData = [localBusinessJsonLd(site), homepage.faqs?.length ? faqJsonLd(homepage.faqs) : null].filter(Boolean);
 ---
 
-<BaseLayout
-  title="La Jolla | Fitness, riabilitazione e performance"
-  description={homepage.heroSubtitle}
->
-  <Header />
+<BaseLayout title={homepage.seoTitle} description={homepage.seoDescription} image="/og-image.svg" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
 
-  <Hero
-    title={homepage.heroTitle}
-    subtitle={homepage.heroSubtitle}
-    primaryCta={homepage.primaryCta}
-    secondaryCta={homepage.secondaryCta}
-  />
+  <main>
+    <Hero
+      title={homepage.heroTitle}
+      subtitle={homepage.heroSubtitle}
+      heroImage={homepage.heroImage}
+      heroImageAlt={homepage.heroImageAlt}
+      primaryCta={homepage.primaryCta}
+      secondaryCta={homepage.secondaryCta}
+      proofPoints={homepage.proofPoints}
+      phone={homepage.phone}
+      whatsapp={homepage.whatsapp}
+    />
 
-  <ServiceGrid services={sortedServices} />
+    <section class="section quick-paths" aria-labelledby="paths-title">
+      <div class="section-heading wide">
+        <p class="eyebrow">Scegli per bisogno</p>
+        <h2 id="paths-title">Trova subito il percorso giusto.</h2>
+        <p>La navigazione traduce il vecchio elenco di attivita in bisogni concreti: allenarti, recuperare, farti seguire da uno specialista o preparare uno sport.</p>
+      </div>
+      <div class="category-grid">
+        {serviceCategories.map((category) => (
+          <a class="category-card" href={`/servizi/#${category.slug}`}>
+            <span>{category.title}</span>
+            <p>{category.intro}</p>
+          </a>
+        ))}
+      </div>
+    </section>
 
-  <Method />
+    <ServiceGrid services={featured} />
 
-  <CmsReady />
+    <Method steps={homepage.methodSteps} />
 
-  <ContactCta
-    phone={homepage.phone}
-    email={homepage.email}
-    address={homepage.address}
-  />
+    <TeamTrust intro={homepage.teamIntro} testimonials={homepage.testimonials} />
+
+    <section class="section specialists-preview">
+      <div class="section-heading wide">
+        <p class="eyebrow">Specialisti</p>
+        <h2>Un approccio globale, non una singola prestazione isolata.</h2>
+        <p>Fisioterapia, osteopatia, massofisioterapia, preparazione atletica, medicina dello sport e nutrizione sono presentate come rete di competenze.</p>
+      </div>
+      <div class="mini-grid">
+        {specialists.map((item) => (
+          <article class="mini-card">
+            <h3>{item.role}</h3>
+            <p>{item.summary}</p>
+            <span>{item.appointment}</span>
+          </article>
+        ))}
+      </div>
+      <a class="button secondary section-button" href="/specialisti/">Vedi tutti gli specialisti</a>
+    </section>
+
+    <FaqSection faqs={homepage.faqs} />
+
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} />
+  </main>
+
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
 </BaseLayout>
+

@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Il centro', url: 'https://www.lajolla.it/il-centro/' }])];
+---
+<BaseLayout title="Il centro | La Jolla Centro Atletico Torino" description="Filosofia, metodo e approccio multidisciplinare del centro atletico La Jolla a Torino." canonicalPath="/il-centro/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Filosofia</p><h1>Noi cerchiamo l'atleta che e in te.</h1><p>Lavoriamo insieme a voi per farvi raggiungere gli obiettivi fisico-atletici prefissati e, quando possibile, superarli per crearne di nuovi.</p></div></section>
+    <section class="section prose-section"><div class="prose"><p>Il centro atletico La Jolla si prefigge di fornire un servizio per tutti: da chi non ha mai svolto attivita sportiva allo sportivo professionista, senza limiti di eta.</p><p>Il vostro obiettivo diventa il nostro: risolvere un problema fisico, partecipare a una competizione, ripristinare una forma fisica salutare o trasformare il rapporto con il corpo e lo sport.</p><p>Il campo d'azione spazia dalla postura al benessere, dalla palestra ai corsi di gruppo, dal ritorno all'attivita quotidiana o sportiva dopo un infortunio alla preparazione atletica specifica per disciplina.</p></div></section>
+    <section class="section landing-grid"><div><p class="eyebrow">Metodo</p><h2>Valutazione, progressione, autonomia.</h2><ul class="check-list">{site.methodSteps.map((item) => <li>{item}</li>)}</ul></div><div><p class="eyebrow">Approccio</p><h2>Allenamento e specialisti nello stesso ecosistema.</h2><p>Fisioterapista, osteopata, massofisioterapisti, preparatori atletici, medico dello sport, dietologa e nutrizionista sono collegati ai percorsi, non nascosti in una pagina secondaria.</p><a class="button secondary" href="/specialisti/">Vedi specialisti</a></div></section>
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} />
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

@@ -1,9 +1,59 @@
 {
-  "heroTitle": "Fitness, riabilitazione e performance a Milano",
-  "heroSubtitle": "La Jolla accompagna sportivi, persone attive e pazienti in percorsi personalizzati di allenamento, recupero e benessere.",
+  "seoTitle": "La Jolla Centro Atletico Torino | Fitness, recupero e performance",
+  "seoDescription": "La Jolla Centro Atletico a Torino offre preparazione atletica, rieducazione funzionale, fisioterapia, osteopatia, nutrizione, fitness e corsi di gruppo.",
+  "heroTitle": "Fitness, recupero e performance con un metodo su misura.",
+  "heroSubtitle": "A Torino, La Jolla accompagna persone attive, sportivi e chi rientra da un infortunio con percorsi personalizzati di allenamento, rieducazione e supporto specialistico.",
+  "heroImage": "/uploads/lajolla-performance-floor.svg",
+  "heroImageAlt": "Allenamento funzionale e preparazione atletica La Jolla",
   "primaryCta": "Prenota una valutazione",
   "secondaryCta": "Scopri i servizi",
-  "phone": "+39 000 000 0000",
+  "proofPoints": [
+    "Preparazione atletica sport per sport",
+    "Rieducazione post infortunio e post intervento",
+    "Fisioterapia, osteopatia e nutrizione",
+    "Percorsi individuali e corsi di gruppo"
+  ],
+  "methodSteps": [
+    "Ascolto di obiettivi, storia fisica e bisogni reali.",
+    "Valutazione iniziale e scelta del percorso piu adatto.",
+    "Programma progressivo con allenamento, trattamento o rieducazione.",
+    "Follow-up per consolidare autonomia, continuita e ritorno allo sport."
+  ],
+  "featuredServices": [
+    "preparazione-atletica",
+    "rieducazione-funzionale",
+    "fisioterapia-riabilitazione",
+    "calcio",
+    "rinforzo-schiena",
+    "nutrizionista-dietologa"
+  ],
+  "teamIntro": "Fisioterapista, osteopata, massofisioterapisti, preparatori atletici, medico dello sport, dietologa e nutrizionista lavorano intorno a obiettivi concreti.",
+  "testimonials": [
+    {
+      "quote": "Vincere implica desiderio, determinazione, disciplina, sacrificio, amore, correttezza e rispetto.",
+      "author": "J. Owens"
+    },
+    {
+      "quote": "Lo sport non e una sfilata, e provarci con tutto te stesso.",
+      "author": "Sergej Bubka"
+    }
+  ],
+  "faqs": [
+    {
+      "question": "La Jolla e adatta anche a chi non pratica sport?",
+      "answer": "Si. Il centro lavora sia con persone che vogliono riprendere a muoversi o stare in forma, sia con sportivi amatoriali e atleti che cercano performance specifica."
+    },
+    {
+      "question": "Posso iniziare dopo un infortunio o un intervento?",
+      "answer": "Si, quando il quadro lo consente. I percorsi post trauma, post infortunio e post intervento vengono costruiti in modo progressivo e possono coinvolgere specialisti diversi."
+    },
+    {
+      "question": "Come si prenota un percorso?",
+      "answer": "Il primo passo e contattare il centro via telefono, email o modulo. Da li viene individuata la figura o il percorso piu coerente con l'obiettivo."
+    }
+  ],
+  "phone": "011.3275114",
   "email": "info@lajolla.it",
-  "address": "Milano"
+  "address": "C.so Agnelli, 20 - 10137 Torino",
+  "whatsapp": ""
 }

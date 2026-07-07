@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import homepage from '../../../content/settings/homepage.json';
+---
+<BaseLayout title="Mission | La Jolla Athletic Center" description="La Jolla mission: help people and athletes reach physical and athletic goals." canonicalPath="/en/mission/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Mission</p><h1>We help people reach physical and athletic goals.</h1><p>From general wellbeing to sport-specific performance, La Jolla works with individual paths, progressive training and specialist support.</p></div></section></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>

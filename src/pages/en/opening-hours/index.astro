@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import Header from '../../../components/Header.astro';
+import SiteFooter from '../../../components/SiteFooter.astro';
+import homepage from '../../../content/settings/homepage.json';
+---
+<BaseLayout title="Opening hours | La Jolla Athletic Center" description="Opening hours for La Jolla Athletic Center in Turin." canonicalPath="/en/opening-hours/">
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main><section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Opening hours</p><h1>Opening hours and appointments.</h1><p>Monday 9.00-21.00, Tuesday 10.15-21.00, Wednesday 9.00-21.00, Thursday 10.15-21.00, Friday 9.00-21.00, Saturday 10.00-13.00 by appointment from 9.00, Sunday closed. Specialists by appointment.</p></div></section></main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>

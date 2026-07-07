@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { serviceCategories, services, site, getCategorySlug } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+
+const structuredData = [
+  localBusinessJsonLd(site),
+  breadcrumbJsonLd([
+    { name: 'Home', url: 'https://www.lajolla.it/' },
+    { name: 'Servizi', url: 'https://www.lajolla.it/servizi/' }
+  ])
+];
+---
+
+<BaseLayout title="Servizi | La Jolla Centro Atletico Torino" description="Tutti i servizi La Jolla: fitness, programmi individuali, preparazione atletica, recupero, corsi e specialisti a Torino." canonicalPath="/servizi/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero">
+      <div class="detail-copy">
+        <p class="eyebrow">Attivita e servizi</p>
+        <h1>Tutti i percorsi La Jolla, senza perdere la ricchezza del sito storico.</h1>
+        <p>Le vecchie pagine sono state riorganizzate in aree leggibili, mantenendo schede autonome per i contenuti piu importanti e redirect dagli URL originali.</p>
+      </div>
+    </section>
+
+    {serviceCategories.map((category) => {
+      const items = services.filter((service) => service.category === category.title);
+      return items.length ? (
+        <section class="section" id={category.slug}>
+          <div class="section-heading wide">
+            <p class="eyebrow">{category.title}</p>
+            <h2>{category.title}</h2>
+            <p>{category.intro}</p>
+          </div>
+          <div class="service-grid compact">
+            {items.map((service) => (
+              <article class="service-card">
+                <span class="service-tag">{service.category}</span>
+                <h3>{service.title}</h3>
+                <p>{service.shortDescription}</p>
+                <a class="text-link" href={`/servizi/${service.slug}/`}>Apri scheda</a>
+              </article>
+            ))}
+          </div>
+        </section>
+      ) : null;
+    })}
+
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} />
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

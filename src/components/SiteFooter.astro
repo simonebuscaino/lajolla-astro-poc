@@ -1,0 +1,24 @@
+---
+const { phone, email, address } = Astro.props;
+---
+<footer class="footer">
+  <div>
+    <img src="/logo-lajolla.svg" alt="La Jolla Centro Atletico" width="178" height="46" loading="lazy" />
+    <p>Centro atletico per fitness, recupero funzionale e performance a Torino.</p>
+  </div>
+  <address>
+    <strong>Contatti</strong>
+    <a href={`tel:${phone?.replaceAll(' ', '')}`}>{phone}</a>
+    <a href={`mailto:${email}`}>{email}</a>
+    <span>{address}</span>
+  </address>
+  <nav aria-label="Link footer">
+    <strong>Sito</strong>
+    <a href="/il-centro/">Il centro</a>
+    <a href="/servizi/">Servizi</a>
+    <a href="/specialisti/">Specialisti</a>
+    <a href="/orari/">Orari</a>
+    <a href="/gallery/">Gallery</a>
+    <a href="/admin/">Area CMS</a>
+  </nav>
+</footer>

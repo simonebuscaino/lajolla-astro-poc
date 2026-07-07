@@ -1,0 +1,13 @@
+{
+  "title": "Foto gallery del centro",
+  "slug": "centro",
+  "description": "Gallery storica foto gallery del centro da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/gallery/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Foto gallery del centro La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

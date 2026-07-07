@@ -1,0 +1,9 @@
+{
+  "name": "Adidas",
+  "slug": "adidas",
+  "relation": "Partnership storica",
+  "description": "Partner presente negli archivi del sito storico.",
+  "legacyUrls": [
+    "/partner_adidas.html"
+  ]
+}

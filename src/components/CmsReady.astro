@@ -1,5 +1,5 @@
 ---
-import { cmsCollections } from '../content/site';
+import { cmsCollections } from '../lib/cmsContent';
 ---
 <section class="section cms-panel" id="cms">
   <div>
@@ -11,3 +11,4 @@ import { cmsCollections } from '../content/site';
     {cmsCollections.map((collection) => <span>{collection}</span>)}
   </div>
 </section>
+

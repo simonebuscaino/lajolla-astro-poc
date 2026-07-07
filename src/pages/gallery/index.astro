@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { galleries, site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Gallery', url: 'https://www.lajolla.it/gallery/' }])];
+---
+<BaseLayout title="Gallery | La Jolla Centro Atletico Torino" description="Gallery moderne per centro, riatletizzazione, golf, sci, pallacanestro, calcio e ritorno in campo." canonicalPath="/gallery/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Gallery</p><h1>Le gallerie storiche, pronte per immagini responsive.</h1><p>Il vecchio sito usava SimpleViewer e XML dedicati. La nuova struttura conserva le sette gallery individuate e prepara immagini accessibili, lazy-loaded e gestibili da CMS.</p></div></section>
+    <section class="section"><div class="gallery-grid">{galleries.map((gallery) => (<article class="gallery-card" id={gallery.slug}><img src={gallery.images[0].src} alt={gallery.images[0].alt} loading="lazy" /><div><span class="service-tag">{gallery.legacyXml}</span><h2>{gallery.title}</h2><p>{gallery.description}</p><p>{gallery.images[0].caption}</p></div></article>))}</div></section>
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

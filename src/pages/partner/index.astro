@@ -1,0 +1,18 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { partners, site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Partner', url: 'https://www.lajolla.it/partner/' }])];
+---
+<BaseLayout title="Partner e convenzioni | La Jolla Centro Atletico Torino" description="Partner e convenzioni storiche La Jolla: Jolly Sport, OLT, Enervit, Balon Boys, EQB, Turin Tour e archivi partner." canonicalPath="/partner/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Partner</p><h1>Convenzioni e partnership preservate dal sito storico.</h1><p>Le schede partner vengono raccolte in un indice unico, con vecchi URL reindirizzati alle relative sezioni.</p></div></section>
+    <section class="section"><div class="mini-grid">{partners.map((partner) => (<article class="mini-card" id={partner.slug}><span class="service-tag">{partner.relation}</span><h2>{partner.name}</h2><p>{partner.description}</p>{partner.url && <a class="text-link" href={partner.url}>Visita sito partner</a>}</article>))}</div></section>
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

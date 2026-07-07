@@ -1,0 +1,10 @@
+{
+  "name": "Jolly Sport",
+  "slug": "jolly-sport",
+  "relation": "Convenzione",
+  "description": "Partner storico del centro per sport e attrezzatura.",
+  "url": "http://www.jollysport.it/",
+  "legacyUrls": [
+    "/partner_jolly_sport.html"
+  ]
+}

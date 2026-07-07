@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import ContactCta from '../../components/ContactCta.astro';
+import SiteFooter from '../../components/SiteFooter.astro';
+import homepage from '../../content/settings/homepage.json';
+import { site } from '../../lib/cmsContent';
+import { breadcrumbJsonLd, localBusinessJsonLd } from '../../lib/seo';
+const structuredData = [localBusinessJsonLd(site), breadcrumbJsonLd([{ name: 'Home', url: 'https://www.lajolla.it/' }, { name: 'Contatti', url: 'https://www.lajolla.it/contatti/' }])];
+---
+<BaseLayout title="Contatti | La Jolla Centro Atletico Torino" description="Contatta La Jolla Centro Atletico: C.so Agnelli 20, Torino, telefono 011.3275114, email info@lajolla.it." canonicalPath="/contatti/" structuredData={structuredData}>
+  <Header phone={homepage.phone} whatsapp={homepage.whatsapp} />
+  <main>
+    <section class="detail-hero page-hero"><div class="detail-copy"><p class="eyebrow">Dove siamo</p><h1>{homepage.address}</h1><p>Telefono e fax: <a href={`tel:${homepage.phone.replaceAll(' ', '')}`}>{homepage.phone}</a>. Email: <a href={`mailto:${homepage.email}`}>{homepage.email}</a>.</p><div class="hero-actions"><a class="button primary" href={`tel:${homepage.phone.replaceAll(' ', '')}`}>Chiama ora</a><a class="button secondary" href="mailto:info@lajolla.it">Scrivi email</a></div></div></section>
+    <section class="section contact-map"><iframe title="Mappa La Jolla C.so Agnelli Torino" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=C.so%20Agnelli%2020%2010137%20Torino&output=embed"></iframe><div><p class="eyebrow">Trasporti</p><h2>Raggiungerci con i mezzi pubblici.</h2><p>La pagina storica sui trasporti viene preservata dentro i contatti. Le indicazioni operative possono essere aggiornate dal CMS insieme a orari e recapiti.</p><a class="text-link" href="https://www.google.com/maps/search/?api=1&query=C.so%20Agnelli%2020%2010137%20Torino">Apri su Google Maps</a></div></section>
+    <ContactCta phone={homepage.phone} email={homepage.email} address={homepage.address} whatsapp={homepage.whatsapp} />
+  </main>
+  <SiteFooter phone={homepage.phone} email={homepage.email} address={homepage.address} />
+</BaseLayout>
+

@@ -1,0 +1,13 @@
+{
+  "title": "Calcio e calcio a 5",
+  "slug": "calcio",
+  "description": "Gallery storica calcio e calcio a 5 da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/calcio/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Calcio e calcio a 5 La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

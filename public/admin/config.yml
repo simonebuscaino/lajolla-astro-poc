@@ -15,17 +15,52 @@ collections:
         label: "Homepage"
         file: "src/content/settings/homepage.json"
         fields:
+          - { label: "SEO title", name: "seoTitle", widget: "string" }
+          - { label: "SEO description", name: "seoDescription", widget: "text" }
           - { label: "Titolo hero", name: "heroTitle", widget: "string" }
           - { label: "Sottotitolo hero", name: "heroSubtitle", widget: "text" }
+          - { label: "Immagine hero", name: "heroImage", widget: "image", required: false }
+          - { label: "Alt immagine hero", name: "heroImageAlt", widget: "string", required: false }
           - { label: "CTA primaria", name: "primaryCta", widget: "string" }
           - { label: "CTA secondaria", name: "secondaryCta", widget: "string" }
+          - label: "Proof point"
+            name: "proofPoints"
+            widget: "list"
+            field: { label: "Testo", name: "text", widget: "string" }
+          - label: "Metodo"
+            name: "methodSteps"
+            widget: "list"
+            field: { label: "Step", name: "step", widget: "string" }
+          - label: "Servizi in evidenza"
+            name: "featuredServices"
+            widget: "list"
+            required: false
+            field: { label: "Slug servizio", name: "slug", widget: "string" }
+          - { label: "Intro team", name: "teamIntro", widget: "text", required: false }
+          - label: "Testimonianze"
+            name: "testimonials"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Citazione", name: "quote", widget: "text" }
+              - { label: "Autore", name: "author", widget: "string" }
+          - label: "FAQ"
+            name: "faqs"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Domanda", name: "question", widget: "string" }
+              - { label: "Risposta", name: "answer", widget: "text" }
           - { label: "Telefono", name: "phone", widget: "string" }
           - { label: "Email", name: "email", widget: "string" }
           - { label: "Indirizzo", name: "address", widget: "string" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string", required: false }
 
   - name: "servizi"
     label: "Servizi"
     folder: "src/content/servizi"
+    extension: "md"
+    format: "frontmatter"
     create: true
     slug: "{{slug}}"
     fields:
@@ -33,6 +68,101 @@ collections:
       - { label: "Slug", name: "slug", widget: "string" }
       - { label: "Categoria", name: "category", widget: "string" }
       - { label: "Descrizione breve", name: "shortDescription", widget: "text" }
+      - { label: "SEO title", name: "seoTitle", widget: "string", required: false }
+      - { label: "SEO description", name: "seoDescription", widget: "text", required: false }
+      - { label: "Immagine hero", name: "heroImage", widget: "image", required: false }
+      - { label: "Alt immagine hero", name: "heroImageAlt", widget: "string", required: false }
+      - label: "Benefici"
+        name: "benefits"
+        widget: "list"
+        required: false
+        field: { label: "Beneficio", name: "benefit", widget: "string" }
+      - label: "Per chi e"
+        name: "audience"
+        widget: "list"
+        required: false
+        field: { label: "Voce", name: "item", widget: "string" }
+      - label: "Processo"
+        name: "processSteps"
+        widget: "list"
+        required: false
+        field: { label: "Step", name: "step", widget: "string" }
+      - label: "FAQ"
+        name: "faqs"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Domanda", name: "question", widget: "string" }
+          - { label: "Risposta", name: "answer", widget: "text" }
       - { label: "Testo CTA", name: "ctaLabel", widget: "string", required: false }
       - { label: "Ordine", name: "order", widget: "number", required: false }
-      - { label: "Contenuto pagina", name: "body", widget: "markdown" }
+      - label: "Contenuto pagina"
+        name: "body"
+        widget: "markdown"
+
+  - name: "specialists"
+    label: "Specialisti"
+    folder: "src/content/specialists"
+    extension: "md"
+    format: "frontmatter"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Ruolo", name: "role", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Descrizione", name: "summary", widget: "text" }
+      - { label: "Modalita appuntamento", name: "appointment", widget: "string", default: "Su appuntamento" }
+      - label: "Servizi collegati"
+        name: "services"
+        widget: "list"
+        required: false
+        field: { label: "Slug servizio", name: "service", widget: "string" }
+      - label: "URL storici"
+        name: "legacyUrls"
+        widget: "list"
+        required: false
+        field: { label: "URL", name: "url", widget: "string" }
+      - { label: "Contenuto", name: "body", widget: "markdown", required: false }
+
+  - name: "partners"
+    label: "Partner"
+    folder: "src/content/partners"
+    extension: 'json'
+    format: 'json'
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Nome", name: "name", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Relazione", name: "relation", widget: "string" }
+      - { label: "Descrizione", name: "description", widget: "text" }
+      - { label: "URL partner", name: "url", widget: "string", required: false }
+      - { label: "Logo", name: "logo", widget: "image", required: false }
+      - label: "URL storici"
+        name: "legacyUrls"
+        widget: "list"
+        required: false
+        field: { label: "URL", name: "url", widget: "string" }
+
+  - name: "galleries"
+    label: "Gallery"
+    folder: "src/content/galleries"
+    extension: 'json'
+    format: 'json'
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Titolo", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Descrizione", name: "description", widget: "text" }
+      - { label: "XML legacy", name: "legacyXml", widget: "string", required: false }
+      - label: "Immagini"
+        name: "images"
+        widget: "list"
+        fields:
+          - { label: "Immagine", name: "src", widget: "image" }
+          - { label: "Alt text", name: "alt", widget: "string" }
+          - { label: "Caption", name: "caption", widget: "string", required: false }
+
+
+

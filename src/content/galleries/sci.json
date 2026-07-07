@@ -1,0 +1,13 @@
+{
+  "title": "Preparazione sci",
+  "slug": "sci",
+  "description": "Gallery storica preparazione sci da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/sci/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Preparazione sci La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "EQB",
+  "slug": "eqb",
+  "relation": "Convenzione",
+  "description": "Centro estetica e benessere partner del sito storico.",
+  "url": "http://www.centroeqb.it/",
+  "legacyUrls": [
+    "/partner_eqb.html"
+  ]
+}

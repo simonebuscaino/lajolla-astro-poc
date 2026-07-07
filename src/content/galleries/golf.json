@@ -1,0 +1,13 @@
+{
+  "title": "Preparazione golf",
+  "slug": "golf",
+  "description": "Gallery storica preparazione golf da migrare dalla vecchia SimpleViewer.",
+  "legacyXml": "/golf/gallery.xml",
+  "images": [
+    {
+      "src": "/uploads/lajolla-performance-floor.svg",
+      "alt": "Preparazione golf La Jolla",
+      "caption": "Immagini legacy da importare e verificare"
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "name": "Turin Tour",
+  "slug": "turin-tour",
+  "relation": "Partnership",
+  "description": "Visite guidate in Torino e Piemonte, partner storico.",
+  "url": "http://turin-tour.com/",
+  "legacyUrls": [
+    "/partner_turin_tour.html"
+  ]
+}
